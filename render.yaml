@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: on-thi-ai
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: APP_ACCESS_CODE
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: CLOUDFLARE_ACCOUNT_ID
+        sync: false
+      - key: CLOUDFLARE_API_TOKEN
+        sync: false
+      - key: CLOUDFLARE_AI_MODEL
+        value: '@cf/google/gemma-4-26b-a4b-it'
